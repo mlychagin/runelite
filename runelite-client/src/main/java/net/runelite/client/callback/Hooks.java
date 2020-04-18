@@ -462,9 +462,6 @@ public class Hooks implements Callbacks
 			log.warn("Error during overlay rendering", ex);
 		}
 
-		// WidgetItemOverlays render at ABOVE_WIDGETS, reset widget item
-		// list for next frame.
-		overlayManager.getItemWidgets().clear();
 	}
 
 	public void onGameStateChanged(GameStateChanged gameStateChanged)
@@ -540,7 +537,7 @@ public class Hooks implements Callbacks
 		// Empty bank item
 		if (widgetItem.getId() != NullItemID.NULL_6512)
 		{
-			overlayManager.getItemWidgets().add(widgetItem);
+			overlayManager.addItem(widgetItem);
 		}
 	}
 

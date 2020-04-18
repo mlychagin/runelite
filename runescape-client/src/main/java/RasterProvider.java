@@ -96,6 +96,6 @@ public final class RasterProvider extends AbstractRasterProvider {
 		} catch (Exception var7) {
 			this.component.repaint();
 		}
-
 	}
+
 }

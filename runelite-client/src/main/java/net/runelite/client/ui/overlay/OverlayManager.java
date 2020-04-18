@@ -25,18 +25,6 @@
 package net.runelite.client.ui.overlay;
 
 import com.google.common.annotations.VisibleForTesting;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import javax.inject.Inject;
-import javax.inject.Singleton;
 import lombok.AccessLevel;
 import lombok.Getter;
 import net.runelite.api.MenuOpcode;
@@ -49,6 +37,18 @@ import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.events.OverlayMenuClicked;
 import net.runelite.client.events.PluginChanged;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
  * Manages state of all game overlays
@@ -389,5 +389,17 @@ public class OverlayManager
 		}
 
 		return null;
+	}
+
+	public void addItem(WidgetItem item) {
+		int index = item.getIndex();
+		if (index == -1) {
+			return;
+		}
+		if (itemWidgets.size() <= index) {
+			itemWidgets.add(item);
+		} else {
+			itemWidgets.set(index, item);
+		}
 	}
 }
